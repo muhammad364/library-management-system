@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Library Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow one"></div>
+    <div class="bg-glow two"></div>
+
+    <main class="container">
+      <header class="hero">
+        <h1>Smart Library Portal</h1>
+        <p>Modern library dashboard for admins and students</p>
+      </header>
+
+      <nav class="role-tabs">
+        <button id="adminTabBtn" class="tab-btn active">Admin Panel</button>
+        <button id="studentTabBtn" class="tab-btn">Student Portal</button>
+      </nav>
+
+      <section id="adminPanel">
+        <section id="loginSection" class="card glass">
+          <h2>Admin Login</h2>
+          <p class="card-subtitle">Sign in to manage books and stock.</p>
+          <form id="loginForm">
+            <div class="form-row">
+              <label for="username">Username</label>
+              <input id="username" type="text" placeholder="admin" required />
+            </div>
+            <div class="form-row">
+              <label for="password">Password</label>
+              <input id="password" type="password" placeholder="admin123" required />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        </section>
+
+        <section id="dashboardSection" class="hidden">
+          <div class="top-bar">
+            <h2>Admin Dashboard</h2>
+            <button id="logoutBtn" class="btn-secondary">Logout</button>
+          </div>
+
+          <div class="stats-row">
+            <article class="stat-card">
+              <h4>Total Titles</h4>
+              <p id="totalTitles">0</p>
+            </article>
+            <article class="stat-card">
+              <h4>Available Copies</h4>
+              <p id="availableCopies">0</p>
+            </article>
+            <article class="stat-card">
+              <h4>Borrowed Copies</h4>
+              <p id="borrowedCopies">0</p>
+            </article>
+          </div>
+
+          <div class="grid">
+            <section class="card glass">
+              <h3 id="formTitle">Add New Book</h3>
+              <form id="bookForm">
+                <div class="form-row">
+                  <label for="title">Title</label>
+                  <input id="title" type="text" required />
+                </div>
+                <div class="form-row">
+                  <label for="author">Author</label>
+                  <input id="author" type="text" required />
+                </div>
+                <div class="form-row">
+                  <label for="category">Category</label>
+                  <input id="category" type="text" placeholder="General" />
+                </div>
+                <div class="form-row">
+                  <label for="isbn">ISBN</label>
+                  <input id="isbn" type="text" />
+                </div>
+                <div class="form-row">
+                  <label for="quantity">Total Quantity</label>
+                  <input id="quantity" type="number" min="0" value="1" required />
+                </div>
+                <div class="actions">
+                  <button type="submit" id="saveBtn">Save Book</button>
+                  <button type="button" id="cancelEditBtn" class="btn-secondary hidden">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </section>
+
+            <section class="card glass">
+              <h3>Book Inventory</h3>
+              <div id="messageBox" class="message hidden"></div>
+              <div id="booksContainer" class="books-grid"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+
+      <section id="studentPanel" class="hidden">
+        <section id="studentLoginSection" class="card glass">
+          <h2>Student Login</h2>
+          <p class="card-subtitle">Login to borrow and return books.</p>
+          <form id="studentLoginForm" class="borrow-form">
+            <div class="form-row">
+              <label for="studentLoginName">Name (required for first login)</label>
+              <input id="studentLoginName" type="text" placeholder="Ali Raza" />
+            </div>
+            <div class="form-row">
+              <label for="studentLoginId">Student ID</label>
+              <input id="studentLoginId" type="text" placeholder="BSCS-24123" required />
+            </div>
+            <div class="form-row">
+              <label for="studentLoginPassword">Password</label>
+              <input id="studentLoginPassword" type="password" placeholder="Enter password" required />
+            </div>
+            <div class="actions">
+              <button type="submit">Login as Student</button>
+            </div>
+          </form>
+          <div id="studentMessageBox" class="message hidden"></div>
+        </section>
+
+        <section id="studentDashboardSection" class="card glass hidden">
+          <div class="top-bar">
+            <h2>Student Borrow Desk</h2>
+            <button id="studentLogoutBtn" class="btn-secondary">Logout</button>
+          </div>
+          <p id="studentWelcome" class="card-subtitle"></p>
+          <h2>Student Borrow Desk</h2>
+          <p class="card-subtitle">Borrow available books or return one copy per click.</p>
+          <div id="studentBooksContainer" class="books-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
