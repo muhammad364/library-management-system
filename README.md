@@ -58,10 +58,34 @@ A simple and minimalist full-stack web app built with JavaScript, Express, and M
 ## API Endpoints
 
 - `POST /api/auth/login`
+- `POST /api/auth/student-login`
 - `GET /api/books`
 - `POST /api/books`
 - `PUT /api/books/:id`
 - `DELETE /api/books/:id`
+- `POST /api/books/:id/borrow`
+- `POST /api/books/:id/return`
+- `GET /health`
+
+## Docker Containerization
+
+Build the image:
+
+```bash
+docker build -t library-management-app .
+```
+
+Run the container:
+
+```bash
+docker run -d -p 5000:5000 --env-file .env library-management-app
+```
+
+Or with MongoDB via Docker Compose:
+
+```bash
+docker compose up -d
+```
 
 ## Deployment Note for EC2
 

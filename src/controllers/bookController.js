@@ -21,12 +21,13 @@ const createBook = async (req, res) => {
 
     const normalizedQuantity = Number(quantity);
     const availability = buildAvailability(normalizedQuantity, 0);
+    const normalizedIsbn = isbn && String(isbn).trim() ? String(isbn).trim() : undefined;
 
     const book = await Book.create({
       title,
       author,
       category,
-      isbn,
+      isbn: normalizedIsbn,
       quantity: normalizedQuantity,
       borrowedCount: 0,
       borrowedBy: [],
@@ -63,6 +64,11 @@ const updateBook = async (req, res) => {
 
     updateData.quantity = nextQuantity;
     updateData.availability = buildAvailability(nextQuantity, existingBook.borrowedCount);
+
+    if (updateData.isbn !== undefined) {
+      const normalizedIsbn = String(updateData.isbn).trim();
+      updateData.isbn = normalizedIsbn ? normalizedIsbn : undefined;
+    }
 
     const updatedBook = await Book.findByIdAndUpdate(id, updateData, {
       new: true,
