@@ -63,6 +63,7 @@ A simple and minimalist full-stack web app built with JavaScript, Express, and M
 - `POST /api/books`
 - `PUT /api/books/:id`
 - `DELETE /api/books/:id`
+<<<<<<< HEAD
 - `POST /api/books/:id/borrow`
 - `POST /api/books/:id/return`
 - `GET /health`
@@ -94,3 +95,5 @@ docker compose up -d
 - Install Node.js and MongoDB (or use MongoDB Atlas).
 - Set `.env` on EC2.
 - Run with process manager (PM2) and expose port in security group.
+=======
+>>>>>>> 2282b0db7d7c6b00e3a99f6c6f785ebbed1310d1
