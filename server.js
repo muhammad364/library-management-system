@@ -29,17 +29,21 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = app;
 
-const gracefulShutdown = (signal) => {
-  console.log(`\n${signal} received. Shutting down gracefully...`);
-  server.close(() => {
-    console.log("Server closed.");
-    process.exit(0);
+if (process.env.NODE_ENV !== "test") {
+  const server = app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
   });
-};
 
-process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
-process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+  const gracefulShutdown = (signal) => {
+    console.log(`\n${signal} received. Shutting down gracefully...`);
+    server.close(() => {
+      console.log("Server closed.");
+      process.exit(0);
+    });
+  };
+
+  process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+  process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+}

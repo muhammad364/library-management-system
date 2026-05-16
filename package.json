@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "seed": "node scripts/seedBooks.js"
+    "seed": "node scripts/seedBooks.js",
+    "test": "jest --testTimeout=30000",
+    "test:e2e": "node selenium/library.e2e.js"
   },
   "keywords": [
     "express",
@@ -24,6 +26,11 @@
     "pm2": "^6.0.14"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "chromedriver": "^148.0.3",
+    "jest": "^30.4.2",
+    "mongodb-memory-server": "^11.1.0",
+    "nodemon": "^3.1.4",
+    "selenium-webdriver": "^4.44.0",
+    "supertest": "^7.2.2"
   }
 }
